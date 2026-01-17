@@ -1,9 +1,11 @@
-ESP32 Internet Radio
-
+# ESP32 Internet Radio
+This project is downloaded from [Elektor ESP32 Internet radio project](https://www.elektormagazine.com/labs/esp32-internet-radio-1).
 Excellent audio performance for this easy to use radio, able to decode most internet station formats ! Updated firmware and Web Server.
 I have built several internet radios.
 During my tests, I concluded that the ESP32 was the perfect processor for this type of application.
 There are many existing projects on the web, however all had flaws that prevented me from fully appreciating an easy-to-use radio.
+
+![ESP32 Internet Radio – Elektor Project](images/https___www.elektormagazine.com_assets_upload_img_public_original_labs-principal.jpg)
 
 Mine has the following main characteristics:
 - Standard ESP32 module (no additional PSRAM needed).
