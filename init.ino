@@ -72,7 +72,7 @@ void initWiFi() {
      int params = request->params();
      String firstSetup;
      for(int i=0;i<params;i++){
-        AsyncWebParameter* p = request->getParam(i);
+        const AsyncWebParameter* p = request->getParam(i);
         if(p->isPost()){ 
           if (p->name() == "ssid") {                                                   // HTTP POST ssid value
             ssid = p->value().c_str();
