@@ -1,0 +1,268 @@
+* {
+    margin: 0.0em;
+    padding: 0.2em 0 0.8em 0;
+    box-sizing: border-box;
+}
+
+html,
+
+html, body {
+  height: 100%;
+  font-family: sans-serif;
+  font-size: 14pt;
+  overflow: hidden;
+  background-color: #181a1b;
+  color: #39f;
+}
+
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+h1 {
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-top: 0.1rem;/* décalage vers le bas */
+}
+
+input {
+    font-size:0.8rem;
+    font-weight:500;
+    color: black;
+    background-color: #708090;
+    text-align: center;
+    outline: none;
+    width: 80%;
+    height: 1.3em;
+    padding: 0.15em 0.4em 0.15em 0.1em;
+    border-radius: 8px;
+    border: 0;
+}
+
+input[type=submit] {
+   height: 1.5em;
+     padding: 0.20em 0.15em;
+     font-size: 1.2rem;
+     font-weight: 500;
+     text-shadow: -1px -1px 0 #000;
+     border: 1px solid #000;
+     border-radius: 8px;
+     color: #73848c;
+     background: linear-gradient(#111, #222);
+     box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.5);
+  outline: none;
+  width: 35%;
+}
+
+input[type=submit]:hover {
+  color: #8f9ca3;
+  transform: translateY(4px);
+}
+
+button#reboot {
+   margin-left: 3rem;
+}
+
+#panel {
+  display: grid;
+  grid-gap: .12em; 
+  justify-items: center;
+  width: 370px;
+  padding: 0.2em 0em 0.4em 0em;
+  background-color: #eee;
+  background-color: #29363d;
+  border-radius: 1em;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(159, 202, 223, 0.25);
+  text-align: center; 
+  color: #668899;
+}
+
+#version {
+  font-weight: 500;
+  font-size: 0.6rem;
+  margin-top : -0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+#buttons {
+  display:inline-block;
+  text-align:center;
+}
+
+.inset {
+  text-shadow: -1px -1px 0 0;
+}
+
+.blocktext {
+   font-weight: 500;
+}
+
+
+button {
+  height: 1.5em;
+  padding: 0.20em 0.15em;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-shadow: -1px -1px 0 #000;
+  border: 1px solid #000;
+  border-radius: 8px;
+  color: #73848c;
+  background: linear-gradient(#111, #222);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+button:active {
+  color: #8f9ca3;
+  transform: translateY(4px);
+}
+
+button2 {
+  height: 1em;
+  padding: 0.20em 0.15em;
+  font-size: 0.4rem;
+  font-weight: 500;
+  text-shadow: -1px -1px 0 #000;
+  border: 1px solid #000;
+  border-radius: 8px;
+  color: #73848c;
+  background: linear-gradient(#111, #222);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 4px 8px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+button2:active {
+  color: #8f9ca3;
+  transform: translateY(4px);
+}
+
+
+#selection {    
+    width:65%;
+    margin-top: -0.6em;
+}
+
+#selChan {
+    font-weight:700;
+    width:23%;
+}
+
+#selVol {
+    font-weight:700;
+    width:23%;
+    margin-right:0.8em;
+}
+
+#signal {    
+    width:60%;
+    margin-bottom: -0.8em;
+    margin-top: 0.3em;
+}
+
+#wifi {    
+    width:60%;
+}
+
+#chanels {    
+    width:55%;
+    margin-top: 0.9em;
+}
+
+
+#sound {
+    margin-bottom: -0.9em;
+    margin-top: -0.6em
+}
+
+#cur_station {
+    font-size: 0.85rem;
+    font-weight:700;
+    margin-top: -1.0em;
+}
+
+#cur_chanel{
+    font-weight:700;
+}
+
+#cur_url{
+    font-size: 0.75rem; 
+    margin-top: -0.9em;
+}
+
+#ssid{
+    width:50%;
+    font-weight:700;
+    margin-bottom: 0.4em;
+}
+
+#pwd{
+    margin-top: 0.3em;
+    margin-bottom: 0.4em;
+    width:50%;
+    font-weight:700;
+}
+
+#ssid2{
+    width:50%;
+    font-weight:700;
+    margin-bottom: 1em;
+}
+
+#pwd2{
+    margin-bottom: 1em;
+    width:50%;
+    font-weight:700;
+}
+
+#init{
+    margin-bottom: 2em;
+    width:25%;
+    font-weight:700;
+}
+
+#rssi{
+    font-weight:500; 
+}
+
+#heure{
+    font-size: 1.2rem;
+    font-weight:700;
+}
+
+#chanel{
+    width:30%;
+    font-weight:700;
+    margin-bottom: 0.4em;
+}
+
+#maxSta{
+    margin-bottom: -0.6em;
+}
+
+#station{
+    margin-bottom: 0.4em;
+    width:70%;
+    font-weight:700;
+}
+
+#saveChanel{
+    margin-bottom: 1.0em;
+}
+
+#saveWifi{
+    margin-top: -0.2em;
+}
+
+#urlStation{
+    width:97%;
+    font-weight:500;
+    margin-top: -1.4em;
+    margin-bottom: 1.4em;
+    font-size:0.6rem;
+    border-radius: 0em;
+}

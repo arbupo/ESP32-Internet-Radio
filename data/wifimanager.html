@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP Wi-Fi Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="parametres.css">
+</head>
+<body>
+  <div id="panel">
+    <h1>ESP Wi-Fi Manager</h1>
+        <form action="/" method="POST">
+          <p>
+            <label class="blocktext" for="ssid2">SSID&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+            <input type="text" id ="ssid2" minlength="1" maxlength="12" name="ssid"><br>
+            <label class="blocktext" for="pwd">Password&nbsp&nbsp</label>
+            <input type="text" id ="pwd2" minlength="1" maxlength="32" name="pwd"><br>
+            <label class="blocktext" for="init">First Setup</label>
+            <input type="checkbox" id ="init" name="init"><br>
+            <input type ="submit" value ="Reboot">
+          </p>
+        </form>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
