@@ -197,8 +197,10 @@ AsyncWebServer server(80);
 
 Preferences preferences;
 
-void setup() {   
+void setup() {
    initSerial();                                                    // Start Serial Monitor
+   SPI.begin(TFT_SCK, -1, TFT_MOSI, TFT_CS);                        // need to initialize SPI
+   Serial.println("SPI initialized");
    initIOs();
    initLittleFS();
    init_screen();
@@ -208,7 +210,7 @@ void setup() {
    if (!modeAP) {                                                   // we have got an internet connection  
       initWebServer();                                              // init and start Webserver
       IrReceiver.begin(IR_RECEIVE_PIN, ENABLE_LED_FEEDBACK);        // IR initialization - default LED LED_BUILTIN (Red Input 02)
-      ElegantOTA.begin(&server);                               // Start ElegantOTA 
+      ElegantOTA.begin(&server);                                    // Start ElegantOTA 
       printPREF2(maxStation);
       Serial.print("Stations array length : ");Serial.println(sizeof(stations));
       configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);     // init NTP time server, print time to serial and TFT display
