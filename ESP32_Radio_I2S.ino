@@ -198,6 +198,7 @@ AsyncWebServer server(80);
 Preferences preferences;
 
 void setup() {
+   neopixelWrite(48, 0, 0, 0);                                      // turn led off
    initSerial();                                                    // Start Serial Monitor
    SPI.begin(TFT_SCK, -1, TFT_MOSI, TFT_CS);                        // need to initialize SPI
    Serial.println("SPI initialized");
