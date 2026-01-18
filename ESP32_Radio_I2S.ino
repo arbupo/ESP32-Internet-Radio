@@ -6,26 +6,26 @@
 // ESP32dev Signal   Wired to TFT       Wired to PCM5102      Wired to the rest
 // -------- ------   ----------------   -------------------   --------------------------------
 // GPIO32            -                  -                     -
-// GPIO04            -                  -                     Mute switch      
-// GPIO27            pin 5 D/C or A0    -                     -       
+// GPIO06            -                  -                     Mute switch (x)     
+// GPIO05            pin 5 D/C or A0    -                     -    (x)   
 // GPIO22            -                  -                     -    
 // GPIO16   RXD2     -                  -                     -       
 // GPIO17   TXD2     -                  -                     -       
-// GPIO18   SCK      pin 7 CLK or SCK   -                     -    
+// GPIO13   SCK      pin 7 CLK or SCK   -                     -    (x)
 // GPIO19   MISO     -                  -                     -    
-// GPIO23   MOSI     pin 6 DIN or SDA   -                     -    
-// GPIO14            pin 3 CS           -                     -       
+// GPIO11   MOSI     pin 6 DIN or SDA   -                     -    (x)
+// GPIO14            pin 3 CS           -                     -    (x)   
 // GPI003   RXD0     -                  -                     -
 // GPIO01   TXD0     -                  -                     -
-// GPIO35   -        -                  -                     Infrared receiver VS1838B
-// GPIO22   -        -                  -                     Volume - switch
-// GPIO21   -        -                  -                     Volume + switch
-// GPIO32   -        -                  -                     Chanel - switch
-// GPIO25   -        -                  -                     Chanel + switch
-// GPIO26   -        -                  pin 4 LCK             - 
-// GPIO05   -        -                  pin 2 BLCK            -
-// GPIO33   -        -                  pin 3 DIN             -
-// GPIO02   -        -                  -                     red LED (IR received)
+// GPIO21   -        -                  -                     Infrared receiver VS1838B (x)
+// GPIO07   -        -                  -                     Volume - switch (x)
+// GPIO18   -        -                  -                     Volume + switch (x)
+// GPIO17   -        -                  -                     Chanel - switch (x)
+// GPIO16   -        -                  -                     Chanel + switch (x)
+// GPIO42   -        -                  pin 4 LCK             - (x)
+// GPIO41   -        -                  pin 2 BLCK            - (x)
+// GPIO40   -        -                  pin 3 DIN             - (x)
+// GPIO02   -        -                  -                     red LED (IR received) (x)
 // GPIO17   -        -                  -                     Reserved PSRAM Clock 
 // GPIO16   -        -                  -                     Reserved PSRAM CS 
 // -------  ------   -----------------  -------------------   -------------------------------   
@@ -52,26 +52,29 @@
 #include <nvs_flash.h>
 #include <ElegantOTA.h>
 
-#define I2S_DOUT               33
-#define I2S_BCLK               05
-#define I2S_LRC                26
+#define AUDIO_BUFFER_SIZE 680000
+#define I2S_DOUT               40
+#define I2S_BCLK               41
+#define I2S_LRC                42
 Audio audio;
 
 #define LED_BUILTIN            02       // red led to show IR activity
-#define BLUE_LED               00       // blue led 
-#define IR_RECEIVE_PIN         35  
+#define BLUE_LED               04       // blue led 
+#define IR_RECEIVE_PIN         21  
 
 // ---------- MAX7219 connection ----------------------------------------------
 #define TFT_CS                 14
 #define TFT_RST                -1       // connected to EN (reset) of ESP32
-#define TFT_DC                 27
+#define TFT_DC                 05
+#define TFT_SCK                13    // SPI Clock (GPIO13)
+#define TFT_MOSI               11    // SPI MOSI (GPIO11) 
 
 // ---------- Button connection ----------------------------------------------
-#define CH_UP                  25       // Station +                          
-#define CH_DOWN                32       // Station -
-#define VOLUME_UP              21       // Volume +                          
-#define VOLUME_DOWN            22       // Volume -
-#define MUTE                   04       // Mute
+#define CH_UP                  16       // Station +                          
+#define CH_DOWN                17       // Station -
+#define VOLUME_UP              18       // Volume +                          
+#define VOLUME_DOWN            07       // Volume -
+#define MUTE                   06       // Mute
 
 // ---------- include IR library ----------------------------------------------
 #define DECODE_RC6                            
