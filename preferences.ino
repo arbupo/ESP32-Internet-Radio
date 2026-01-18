@@ -187,6 +187,42 @@ void sortStations() {
     preferences.end();
 }
 
+// Delete station
+// -------------------------------
+void deleteStation(int rang) {
+    String key1, key2;                                               // position of data and next data in Preference
+    String temp1, temp2;                                             // temp1 = name/url and temp2 = next name/ next url
+    preferences.begin("Chanels", false);                             // read/write mode
+    for (int i = rang; i < maxStation ; i++) {                       // search if new name already exists in the list 
+        key1 = "chanel_" + String(2*(i+1)+1);                        // name au rang + 1
+        temp1 = preferences.getString(key1.c_str(), EMPTY);
+        key1 = "chanel_" + String(2*i+1);                            // et on l'écrit au rang n
+        preferences.putString(key1.c_str(), temp1);
+        key2 = "chanel_" + String(2*(i+2));   
+        temp2 = preferences.getString(key2.c_str(), EMPTY);          // url au rang n + 1
+        key2 = "chanel_" + String(2*(i+1));
+        preferences.putString(key2.c_str(), temp2);                  // et on l'écrit au rang n
+    }
+    preferences.end();
+}
+
+// Search same Name
+// ---------------------------------------
+void searchSameName(String station_new, String url_new) {
+    preferences.begin("Chanels", false);                                           // read/write mode
+    for (int i = 0; i < maxStation ; i++) {                                        // search if new name already exists in the list 
+        String key1 = "chanel_" + String(2*i+1);   
+        String temp = preferences.getString(key1.c_str(), EMPTY);
+        String key2 = "chanel_" + String(2*i);   
+        String temp2 = preferences.getString(key2.c_str(), EMPTY);
+        if ((temp == station_new) && (temp2 == url_new)) {
+           flagExist = true;
+           break;
+        }
+    }
+    preferences.end();                                                                 // read/write mode
+}
+
 // Set new chanel
 // -------------------------------
 void setNewChanel(String newName) {

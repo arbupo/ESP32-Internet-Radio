@@ -87,6 +87,7 @@ String rssi;
 String NEW_NAME     = "12 char max";
 String NEW_URL      = "paste/copy url after http://   like:   europe2.lmn.fm/europe2.aac";
 String EMPTY        = "empty";
+String DELETE       = "delete";
 
 // http://fluxradios.blogspot.com/ 
 // indicate stream, displayed name for each channel (MAX 12 characters !!!) - Default values stored in Preference 2
@@ -177,6 +178,7 @@ byte        cur_volume;
 bool        flag_mute          = 0;
 String      Name;
 String      Url;
+bool        flagExist;                                            // used to check is a name is already in the list
 
 String      AudioInfo;
 String      Station;

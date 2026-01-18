@@ -98,23 +98,27 @@ void onSetChanel(AsyncWebServerRequest *request) {
     String station_new = request->getParam("station")->value();
     String url_new = request->getParam("urlStation")->value();
     bool flagExist = false;
-    preferences.begin("Chanels", false);                                           // read/write mode
-    for (int i = 0; i < maxStation ; i++) {                                        // search if new name already exists in the list 
-        String key1 = "chanel_" + String(2*i+1);   
-        String temp = preferences.getString(key1.c_str(), EMPTY);
-        String key2 = "chanel_" + String(2*i);   
-        String temp2 = preferences.getString(key2.c_str(), EMPTY);
-        if ((temp == station_new) && (temp2 == url_new)) {
-           flagExist = true;
-           break;
-        }
-    }
-    preferences.end();                                                             // read/write mode
+    searchSameName(station_new,url_new);
     if (flagExist == true) Serial.println(station_new + " is already in the list");
     Serial.printf("New chanel received: %d\n", chanel_new);
     Serial.print("New name received: "); Serial.println(station_new);
     Serial.print("New url received: "); Serial.println(url_new);
-    if ( (chanel_new <= maxStation + 1) && (station_new != NEW_NAME) && (url_new != NEW_URL) && (flagExist == false)){
+    if ((flagExist == false) && (station_new == DELETE) && (maxStation >= 1) && (chanel_new <= maxStation) ){        // delete station and decrements maxStation
+       maxStation = maxStation - 1;
+       saveMaxStationToPREF1();
+       Serial.println("Delete Station");
+       Serial.print("maxStation has been updated: "); Serial.println(maxStation);
+       deleteStation(chanel_new - 1);                                                     // shifts the array down one row
+       Serial.println("Ok done !");
+       printPREF2(maxStation);
+       if (chanel_new >  maxStation){
+          cur_station = maxStation;
+       }else{
+          cur_station = chanel_new;
+       }
+       set_station();
+    }
+    if ( (chanel_new <= maxStation + 1) && (station_new != NEW_NAME) && (station_new != DELETE) && (url_new != NEW_URL) && (flagExist == false)){
        if (chanel_new > maxStation) {
          maxStation = chanel_new;
          saveMaxStationToPREF1();
@@ -130,7 +134,7 @@ void onSetChanel(AsyncWebServerRequest *request) {
     }
     audio.setVolume(cur_volume);
   }
-  request->send(200);                                                                 // requests are asynchronous and must always be resolved:
+  request->send(200);                                                               // requests are asynchronous and must always be resolved:
 }
 
 // Manager for queries of values set by the operator
