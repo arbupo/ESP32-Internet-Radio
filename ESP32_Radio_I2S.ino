@@ -43,7 +43,7 @@
 #include <WiFi.h>
 #include <WiFiMulti.h>
 #include <ESPAsyncWebServer.h>
-#include "SPIFFS.h"
+#include <LittleFS.h>
 #include <Preferences.h>
 #include <nvs_flash.h>
 #include <AsyncElegantOTA.h> 
@@ -196,7 +196,7 @@ Preferences preferences;
 void setup() {   
    initSerial();                                                    // Start Serial Monitor
    initIOs();
-   initSPIFFS();
+   initLittleFS();
    init_screen();
    readPREF1();
    initWiFi();

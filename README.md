@@ -32,7 +32,7 @@ In real time you can see : rssi value of the WiFi signal, volume, current chanel
 
 You can also easily update the firmware via OTA.
 
-I have updated this project with a new software (version 1.60). You must also upadte SPIFFS memory with the attached file. Radio stations are now alphabelicaly sorted !
+I have updated this project with a new software (version 1.60). You must also upadte LittleFS memory with the attached file. Radio stations are now alphabelicaly sorted !
 
 A small User Manual gives some informations regarding the use and the compliation of the sofware.
 The Web server is completely new !

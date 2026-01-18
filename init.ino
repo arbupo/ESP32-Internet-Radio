@@ -27,18 +27,30 @@ void initIOs() {
     Serial.println("1. I/O and I2S initialized");
 }
 
-// SPIFFS initialization
-void initSPIFFS() {
-   if(!SPIFFS.begin(true)){
-     Serial.println("An Error has occurred while mounting SPIFFS");
+// LittleFS initialization
+void initLittleFS() {
+   if(!LittleFS.begin(true)){
+     Serial.println("An Error has occurred while mounting LittleFS");
      tft.setTextColor(ST77XX_RED);
-     Message("SPIFFS ko !", 65, 2);
-     Message("Rebooting", 93,2);
+     Message("LittleFS ko !", 65, 2);
+     Message("Rebooting", 93, 2);
      Serial.flush();
      delay(2000);
      ESP.restart();
    }
-    Serial.println("2. SPIFFS volume is mounted");
+   Serial.println("2. LittleFS volume is mounted");
+
+   // List all files to confirm they exist
+   Serial.println("Listing LittleFS files:");
+   File root = LittleFS.open("/");
+   File file = root.openNextFile();
+   while(file){
+       Serial.print("File: ");
+       Serial.print(file.name());
+       Serial.print("  Size: ");
+       Serial.println(file.size());
+       file = root.openNextFile();
+   }
 }
 
 // WiFi connection initialization
@@ -66,8 +78,8 @@ void initWiFi() {
      Message(message, 89,2);
      
      server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){                      // Web Server Root URL
-     request->send(SPIFFS, "/wifimanager.html", "text/html"); });                     
-     server.serveStatic("/", SPIFFS, "/");   
+     request->send(LittleFS, "/wifimanager.html", "text/html"); });                     
+     server.serveStatic("/", LittleFS, "/");   
      server.on("/", HTTP_POST, [](AsyncWebServerRequest *request) {
      int params = request->params();
      String firstSetup;

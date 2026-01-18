@@ -15,7 +15,7 @@ void initWebServer() {
   server.on("/setchanel",  onSetChanel);                                            // set chanel parameters after Save pressed
   server.on("/setsel",     onSetSel);                                               // set volume and chanel parameters after OK pressed
   server.onNotFound(onNotFound);
-  server.serveStatic("/", SPIFFS, "/");                                             // SPIFFS is used to store html, css, js and favicon
+  server.serveStatic("/", LittleFS, "/");                                           // LittleFS is used to store html, css, js and favicon
   server.begin();                                                                   // server initialization
   Serial.println("6. Web server started");
 }
@@ -61,7 +61,7 @@ String ParametresProcessor(const String &var)
 // Specific treatment of the root page (as a template)
 // ---------------------------------------------------
 void onRootRequest(AsyncWebServerRequest *request) {
-  request->send(SPIFFS, "/parametres.html", "text/html", false, ParametresProcessor);
+  request->send(LittleFS, "/parametres.html", "text/html", false, ParametresProcessor);
 }
 
 // Manager for queries of values set by the operator
