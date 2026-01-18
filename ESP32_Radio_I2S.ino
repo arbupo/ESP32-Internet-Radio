@@ -34,19 +34,23 @@
 // VCC 3.3V -        pin 1 VCC          pin 6 VIN             Power supply
 // EN       -        pin 4 RST          -                     Reset ESP32
 
+// Update ELEGANTOTA_USE_ASYNC_WEBSERVER to 1 in ElegantOTA library
+// #ifndef ELEGANTOTA_USE_ASYNC_WEBSERVER
+//   #define ELEGANTOTA_USE_ASYNC_WEBSERVER 0
+// #endif
+
 #include "Arduino.h"
 #include <Adafruit_GFX.h>               // core graphics library
 #include <Adafruit_ST7735.h>            // hardware-specific library for ST7735
 #include <SPI.h>
 #include "Audio.h"
-//#include <AsyncTCP.h>
 #include <WiFi.h>
 #include <WiFiMulti.h>
 #include <ESPAsyncWebServer.h>
 #include <LittleFS.h>
 #include <Preferences.h>
 #include <nvs_flash.h>
-#include <AsyncElegantOTA.h> 
+#include <ElegantOTA.h>
 
 #define I2S_DOUT               33
 #define I2S_BCLK               05
@@ -204,7 +208,7 @@ void setup() {
    if (!modeAP) {                                                   // we have got an internet connection  
       initWebServer();                                              // init and start Webserver
       IrReceiver.begin(IR_RECEIVE_PIN, ENABLE_LED_FEEDBACK);        // IR initialization - default LED LED_BUILTIN (Red Input 02)
-      AsyncElegantOTA.begin(&server);                               // Start ElegantOTA 
+      ElegantOTA.begin(&server);                               // Start ElegantOTA 
       printPREF2(maxStation);
       Serial.print("Stations array length : ");Serial.println(sizeof(stations));
       configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);     // init NTP time server, print time to serial and TFT display
